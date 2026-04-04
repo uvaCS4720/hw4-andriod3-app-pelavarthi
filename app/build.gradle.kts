@@ -1,16 +1,8 @@
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-}
-
-val secretsFile = rootProject.file("secrets.properties")
-val secrets = Properties()
-if (secretsFile.exists()) {
-    secrets.load(secretsFile.inputStream())
 }
 
 android {
@@ -26,7 +18,6 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders["MAPS_API_KEY"] = secrets.getProperty("MAPS_API_KEY", "")
     }
 
     buildTypes {
